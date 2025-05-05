@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article; // Importation de l'entité Article
+use App\Repository\ArticleRepository;
 use Doctrine\ORM\EntityManager; // Importation de l'EntityManager (non utilisé ici)
 use Doctrine\ORM\EntityManagerInterface; // Interface pour interagir avec la base de données via Doctrine
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; // Contrôleur de base de Symfony
@@ -50,6 +51,58 @@ class ArticleController extends AbstractController {
 
 		// Affiche le formulaire de création d'article (même si la méthode est GET)
 		return $this->render('create-article.html.twig');
+	}
+
+    #[Route('/list-articles', name: 'list-articles')] // Route définissant l'URL accessible pour lister les articles
+    public function displayListArticles(ArticleRepository $articleRepository) {
+    
+        // permet de faire une requête SQL SELECT * sur la table article
+        $articles = $articleRepository->findAll(); // Récupération de tous les articles en base via le repository
+    
+        return $this->render('list-articles.html.twig', [
+            'articles' => $articles // Passage des articles à la vue Twig pour affichage
+        ]);
+    
+        // Fin de la méthode displayListArticles
+    }
+
+    // Route définissant l'URL accessible pour afficher le détail d'un article
+    #[Route('/detail-article/{id}', name: "detail-article")] 
+    public function displayDetailArticle($id, ArticleRepository $articleRepository) {
+    
+        // Récupère l'article correspondant à l'identifiant fourni via le repository
+        $article = $articleRepository->find($id);
+
+        // si l'article n'a pas été trouvé pour l'id demandé
+		// on envoie l'utilisateur vers la page qui affiche une erreur 404
+		if (!$article) {
+			return $this->redirectToRoute('404');
+		}
+
+        // Rend le template Twig 'detail-article.html.twig' en passant l'article comme variable
+        return $this->render('detail-article.html.twig', [
+        'article' => $article
+    ]);
+
+
+    }
+
+
+	#[Route('/delete-article/{id}', name: "delete-article")]
+	public function deleteArticle($id, ArticleRepository $articleRepository, EntityManagerInterface $entityManager) 
+	{
+		// pour supprimer un article, je dois d'abord le récupérer
+		$article = $articleRepository->find($id);
+
+		// j'utilise la méthode remove de la classe EntityManager qui prend en parametre l'article à supprimer
+		$entityManager->remove($article);
+		$entityManager->flush();
+
+		// j'ajoute un message flash pour notifier que l'article est supprimé
+		$this->addFlash('success', 'Article supprimé');
+
+		// je redirige vers la page de liste
+		return $this->redirectToRoute('list-articles');
 	}
 
 }

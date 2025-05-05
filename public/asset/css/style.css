@@ -1,0 +1,191 @@
+/* Style général du body */
+body {
+    font-family: Arial, sans-serif; /* Police sans serif */
+    margin: 20px; /* Marge autour du contenu */
+    background-color: #bfbbbb; /* Fond gris clair */
+}
+
+/* Titre principal */
+h1 {
+    text-align: center; /* Centrer le texte */
+    margin-bottom: 30px; /* Espace sous le titre */
+}
+
+/* Container qui regroupe toutes les cartes cocktails */
+.cocktail-container {
+    display: flex; /* Flexbox pour aligner les éléments */
+    flex-wrap: wrap; /* Permet de passer à la ligne si besoin */
+    justify-content: center; /* Centre les cocktails horizontalement */
+    gap: 20px; /* Espace entre les cartes */
+}
+
+/* Style de chaque carte de cocktail */
+.cocktail {
+    background: rgb(238, 206, 206); /* Fond rosé clair */
+    border-radius: 10px; /* Coins arrondis */
+    overflow: hidden; /* Cache ce qui dépasse */
+    width: 200px; /* Largeur fixe */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Ombre discrète */
+    text-align: center; /* Centrage du contenu */
+    padding: 10px; /* Padding intérieur */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition pour effet hover fluide */
+}
+
+/* Effet au survol d'une carte cocktail */
+.cocktail:hover {
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* Ombre plus marquée */
+}
+
+/* Style de l'image à l'intérieur de la carte */
+.cocktail img {
+    width: 100%; /* Image prend toute la largeur */
+    height: auto; /* Garde les proportions */
+    border-radius: 8px; /* Coins arrondis sur l'image */
+    display: flex; /* (Pas strictement nécessaire pour img, mais OK) */
+}
+
+/* Bloc pour afficher les ingrédients */
+.ingredients {
+    margin: 10px 0; /* Marge haut et bas */
+}
+
+/* Description supplémentaire du cocktail (si utilisée) */
+.description {
+    font-size: 0.9em; /* Texte un peu plus petit */
+    margin: 10px 0; /* Marge verticale */
+}
+
+/* Date de création du cocktail */
+.date {
+    font-size: 0.8em; /* Petit texte pour la date */
+    color: #483333; /* Couleur sombre */
+}
+
+.sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 20px; /* Zone de détection étroite */
+    z-index: 1000;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100px;
+    background-color: #efb6ce;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+
+
+
+/* Liens dans la sidebar */
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #000000; /* gris clair */
+    display: block;
+    transition: 0.3s;
+  }
+  
+  /* Effet hover */
+  .sidebar a:hover {
+    background-color: #334155; /* bleu-gris plus clair */
+    color: #ffffff;
+  }
+  
+  /* Pour le contenu principal à côté de la sidebar */
+  .main-content {
+    margin-left: 250px; /* même largeur que la sidebar */
+    padding: 20px;
+  }
+
+  .header {
+    background-color: #e1a6a6;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: right;
+
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    text-align: right
+    
+    
+}
+
+.header-message {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    text-align: right;
+    background-color: aqua;
+}
+
+.footer {
+    background-color: rgb(215, 112, 112);
+    text-align: right;
+}
+
+
+/* Container qui regroupe toutes les cartes cocktails */
+.categories-container {
+    display: flex; /* Flexbox pour aligner les éléments */
+    flex-wrap: wrap; /* Permet de passer à la ligne si besoin */
+    justify-content: center; /* Centre les cocktails horizontalement */
+    gap: 20px; /* Espace entre les cartes */
+}
+
+/* Style de chaque carte de cocktail */
+.categories {
+    background: rgb(238, 206, 206); /* Fond rosé clair */
+    border-radius: 10px; /* Coins arrondis */
+    overflow: hidden; /* Cache ce qui dépasse */
+    width: 200px; /* Largeur fixe */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Ombre discrète */
+    text-align: center; /* Centrage du contenu */
+    padding: 10px; /* Padding intérieur */
+    transition: transform 0.3s, box-shadow 0.3s; /* Transition pour effet hover fluide */
+}
+
+/* Effet au survol d'une carte cocktail */
+.categories:hover {
+    transform: scale(1.05); /* Légère augmentation de taille */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2); /* Ombre plus marquée */
+}
+
+/* Style de l'image à l'intérieur de la carte */
+.categoriesl img {
+    width: 100%; /* Image prend toute la largeur */
+    height: auto; /* Garde les proportions */
+    border-radius: 8px; /* Coins arrondis sur l'image */
+    display: flex; /* (Pas strictement nécessaire pour img, mais OK) */
+}
+
+.photo-profil {
+    width: 80px;       /* Taille en largeur (ajustez si besoin) */
+    height: 80px;      /* Hauteur égale pour garder le cercle */
+    border-radius: 50%; /* Rend l'image parfaitement ronde */
+    object-fit: cover;  /* Recadre bien l’image dans le cercle */
+    border: 2px solid #ccc; /* Optionnel : bordure grise légère */
+  }
+  
+
+
+
+
+

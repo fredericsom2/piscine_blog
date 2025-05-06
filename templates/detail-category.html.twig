@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+<article style="background-color: {{ category.color }};">
+
+	<h1>{{ category.title }}</h1>
+	<p>{{ category.description }}</p>
+	<p>Créé le {{ category.createdAt | date()}}</p>
+
+</article>
+
+{% endblock main %}

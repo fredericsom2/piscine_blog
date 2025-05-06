@@ -105,4 +105,47 @@ class ArticleController extends AbstractController {
 		return $this->redirectToRoute('list-articles');
 	}
 
+	#[Route(path: '/update-article/{id}', name: "update-article")]
+public function displayUpdateArticle($id, ArticleRepository $articleRepository, Request $request, EntityManagerInterface $entityManager) {
+
+	// Récupération de l'article correspondant à l'ID passé dans l'URL
+	$article = $articleRepository->find($id);
+
+	// Vérifie si la requête est de type POST (formulaire soumis)
+	if ($request->isMethod("POST")) {
+
+		// Récupération des données envoyées via le formulaire
+		$title = $request->request->get('title');
+		$description = $request->request->get('description');
+		$content = $request->request->get('content');
+		$image = $request->request->get('image');
+					
+		// Méthode 1 : mise à jour de l'article avec les fonctions set (setter)
+		//$article->setTitle($title);
+		//$article->setDescription($description);
+		//$article->setContent($content);
+		//$article->setImage($image);
+
+		// Méthode 2 : mise à jour via une méthode update (respecte l'encapsulation)
+		$article->update($title, $content, $description, $image);
+
+		// Enregistre les modifications en base de données
+		$entityManager->persist($article);
+		$entityManager->flush();
+
+
+		// j'ajoute un message flash pour notifier que l'article est supprimé
+		$this->addFlash('success', 'Article modifié');
+
+
+	
+	}
+
+	// Affiche le formulaire de mise à jour avec les données actuelles de l'article
+	return $this->render('update-article.html.twig', [
+		'article' => $article
+	]);
+
+}
+
 }

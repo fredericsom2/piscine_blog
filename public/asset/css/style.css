@@ -90,22 +90,6 @@ h1 {
 
 
 
-/* Liens dans la sidebar */
-.sidebar a {
-    padding: 15px 25px;
-    text-decoration: none;
-    font-size: 18px;
-    color: #000000; /* gris clair */
-    display: block;
-    transition: 0.3s;
-  }
-  
-  /* Effet hover */
-  .sidebar a:hover {
-    background-color: #334155; /* bleu-gris plus clair */
-    color: #ffffff;
-  }
-  
   /* Pour le contenu principal à côté de la sidebar */
   .main-content {
     margin-left: 250px; /* même largeur que la sidebar */

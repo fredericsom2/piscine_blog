@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block main %}
+		
+			<h2>Toutes les catégories</h2>
+			<div class="articles-list">
+					{% for category in category %}
+						<div>
+									<h3>{{ category.title }}</h3>
+									<li><a href="{{ path('show-category', {'id' : category.id}) }}">voir la category</a></li>
+									<a href="{{ path('update-category', {'id' : category.id}) }}">Modifier la category</a>
+									<span>Publié le
+										{{ category.createdAt | date('d/m/Y') }}</span>
+								</article>
+							</a>
+						</div>
+					{% endfor %}
+			</div>
+
+		</section>
+	{% endblock main %}

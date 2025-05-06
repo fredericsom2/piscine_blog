@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+
+	<h1>Liste des catégories</h1>
+
+	<section class="articles-list-container">
+	
+		{% for category in categories %}
+
+			<article style="background-color: {{ category.color }};" class="article">
+				<p>{{ category.title }}</p>
+				<a href="{{ path('show-category', {'id' : category.id}) }}">Voir le détail</a>
+				<a href="{{ path('update-category', {'id' : category.id}) }}">Modifier la category</a>
+			</article>
+
+		{% endfor %}
+
+	</section>
+
+{% endblock main %}

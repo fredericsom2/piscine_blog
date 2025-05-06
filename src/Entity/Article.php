@@ -43,6 +43,23 @@ class Article
         $this->createdAt = new \DateTime();
         $this->isPublished = true;
     }
+    
+
+  // Méthode publique pour mettre à jour les propriétés de l'objet
+public function update($title, $content, $description, $image) {
+    // Met à jour le titre de l'objet
+    $this->title = $title;
+
+    // Met à jour le contenu principal
+    $this->content = $content;
+
+    // Met à jour la description de l'objet
+    $this->description = $description;
+
+    // Met à jour l'image associée
+    $this->image = $image;
+
+}
 
     public function getId(): ?int
     {
